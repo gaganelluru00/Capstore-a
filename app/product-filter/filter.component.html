@@ -1,0 +1,40 @@
+<p>filter works!</p>
+<li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+    ><b>Apply Filters</b> <span class="caret"></span
+  ></a>
+  <ul class="dropdown-menu" (click)="sortFilter($event)">
+    <li><a>Price-Low To High</a></li>
+    <li><a>Price-High to Low</a></li>
+    <li><a>Rating-Low To High</a></li>
+    <li><a>Rating-High to Low</a></li>
+  </ul>
+</li>
+
+<div class="container cartData">
+  <table class="table table-striped">
+    <tr>
+      <th>Product Name</th>
+      <th>Price</th>
+      <th>Rating</th>
+    </tr>
+    <tr *ngFor="let p of filterProducts">
+      <td>
+        {{ p.productName }}
+      </td>
+      <td>
+        {{ p.productPrice }}
+      </td>
+      <td>
+        {{ p.productRating }}
+      </td>
+    </tr>
+  </table>
+</div>
+<!-- <div class="card" style="background-color: white;" >
+  <img src="" alt="Product Image">
+  <h3>Product Name</h3>
+  <p class="price">Product Cost</p>
+  
+  <p><button style="width: 70%;height: 40px; text-align: center; background-color:chartreuse; color: black;"><small> Product</small></button></p>
+</div> -->

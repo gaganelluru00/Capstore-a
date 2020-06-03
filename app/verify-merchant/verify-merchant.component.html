@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="panel-heading">
+    <h1>Merchants</h1>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped table-hover" style="color: indigo;">
+      <thead>
+        <tr>
+          <th>Merchant Id</th>
+          <th>Merchant Name</th>
+          <th>Merchant UserName</th>
+          <th>Merchant Phone No</th>
+          <th>Merchant Email Id</th>
+          <th>Status</th>
+          <th>Accept</th>
+          <th>Reject</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="merchant">
+          
+          <td>
+            <button (click)="acceptMerchant()" class="is-small btn btn-success">
+              Accept
+            </button>
+          </td>
+          <td>
+            <button (click)="rejectMerchant()" class="is-small btn btn-danger">
+              Reject
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button (click)="closeTab()" class="is-small btn btn-primary">
+    Click here to Close
+  </button>
+</div>

@@ -1,0 +1,175 @@
+<head>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+  <div>
+    <nav class="navbar navbar-inverse">
+      <div class="navbar-header">
+        <span class="navbar-brand" style="color: whitesmoke;"
+          ><strong
+            ><b><span style="color: lightblue;"> cap</span>Store</b></strong
+          ></span
+        >
+      </div>
+      <div id="mySidebar" class="sidebar">
+        <a class="closebtn" (click)="closeNav()">×</a>
+        <ul>
+          <li><a [routerLink]="['']">Profile</a></li>
+          <li><a [routerLink]="['']">Wish List</a></li>
+          <li><a [routerLink]="['']">Feedback</a></li>
+          <li><a [routerLink]="['']">Orders</a></li>
+          <li><a [routerLink]="['']">Log out</a></li>
+          <li><a [routerLink]="['/changePassword']">Change Password</a></li>
+        </ul>
+      </div>
+
+      <ul class="nav navbar-nav">
+        <li>
+          <a (click)="openNav()"><b>☰ </b></a>
+        </li>
+        <li class="dropdown"><button class="dropbtn" (click)="homePage()" ><b>Home</b></button></li>
+        
+        <li class="dropdown">
+          <button class="dropbtn">Discount</button>
+          <div class="dropdown-content" (click)="getDiscountProducts($event)">
+            <a>Less than 50</a>
+            <a>50-60</a>
+            <a>60-70</a>
+            <a>Greater than 70</a>
+          </div>
+        </li>
+
+        <li class="dropdown">
+          <button class="dropbtn">Apply Filters</button>
+          <div class="dropdown-content" (click)="sortFilter($event, routeCategory)">
+            <a>Price-Low To High</a>
+            <a>Price-High to Low</a>
+           <a>Rating-Low To High</a>
+            <a>Rating-High to Low</a>
+          </div>
+        </li>
+        <li style="color: whitesmoke;">
+          <a [routerLink]="['']"
+            ><span
+              style="color: whitesmoke;"
+              class="glyphicon glyphicon-shopping-cart"
+            ></span>Cart</a>
+        </li>
+      </ul>
+
+      <div style="float: right;">
+        <div class="search-container">
+          <form class="form-inline">
+            <input
+              class="form-control mr-sm-2"
+              style="width: 500px; margin-right: 3px; margin-top: 6px;"
+              type="text"
+              required
+              [(ngModel)]="searchProduct"
+              name="username"
+              ngModel/>
+            <input
+              type="button"
+              type="submit"
+              value="Search"
+              style="margin-top: 6px; background-color: #ffc107;"
+              (click)="search()"
+            /><i class="glyphicon glyphicon-triangle-bottom"></i>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="container py-5" style="margin-left: 600px;">
+    <div class="row text-center text-white mb-5">
+      <div class="col-lg-7 mx-auto">
+        <h1 class="display-4">Product List</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <!-- List group-->
+        <ul class="list-group shadow">
+          <!-- list group item-->
+          <li class="list-group-item" *ngFor="let product of categoryProducts">
+            <!-- Custom content-->
+            <div
+              class="media align-items-lg-center flex-column flex-lg-row p-3"
+            >
+              <div class="media-body order-2 order-lg-1">
+                <h5 class="mt-0 font-weight-bold mb-2">{{product.productName}}</h5>
+                <p class="font-italic text-muted mb-0 small">
+                 Category: {{ product.productCategory }}
+                </p>
+                <div
+                  class="d-flex align-items-center justify-content-between mt-1"
+                >
+                  <h6 class="font-weight-bold my-2">
+                   Price: {{ product.productPrice | currency : 'INR'}}
+                  </h6>
+                  <h6 class="font-weight-bold my-2">
+                    Rating:{{ product.productRating }}
+                  </h6>
+                  <ul class="list-inline small">
+                    <li class="list-inline-item m-0">
+                      <i class="fa fa-star text-success"></i>
+                    </li>
+                    <li class="list-inline-item m-0">
+                      <i class="fa fa-star text-success"></i>
+                    </li>
+                    <li class="list-inline-item m-0">
+                      <i class="fa fa-star text-success"></i>
+                    </li>
+                    <li class="list-inline-item m-0">
+                      <i class="fa fa-star text-success"></i>
+                    </li>
+                    <li class="list-inline-item m-0">
+                      <i class="fa fa-star-o text-gray"></i>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <img
+                src="{{'/assets/Images/'+product.productImage}}"
+                alt="Product Image"
+                width="200"
+                class="ml-lg-5 order-1 order-lg-2"
+              />
+            </div>
+            <!-- End -->
+            <br />
+            <button
+              type="submit"
+              class="btn btn-default btn-rounded peach-gradient"
+              style="background-color: greenyellow;"  (click)="productPage(product.productId)"
+            >
+              <b>Select</b>
+            </button>
+          </li>
+          <!-- End -->
+          <!-- list group item-->
+        </ul>
+        <!-- End -->
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+</body>
